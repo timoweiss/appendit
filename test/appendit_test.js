@@ -129,6 +129,18 @@ describe('html', function () {
     equalHelper(options, 'single_with_content.html', 'single_insert.html');
   });
 
+	it('shouldn\'t append any script tag', function () {
+	  var options = {
+	    anchor: '<!-- anchor -->',
+	    check: true,
+	    content: [
+	      '<script src="a.js"></script>',
+	      '<script src="b.js"></script>'
+	    ]
+	  };
+	  equalHelper(options, 'multiple_with_content_injection.html', 'multiple_content_injection.html');
+	});
+
   it('plaintext', function () {
     var options = {
       anchor: '#Changelog',
